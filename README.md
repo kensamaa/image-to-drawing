@@ -3,9 +3,9 @@
 
 <p>turn the picture to gray</p>
 
-![](i/img/grayImage.jpg)
-<p>invert the picture</p>
-<p>blur the image</p>
+![](img/grayImage.jpg)
+
+<p>blur the image then invert it</p>
 
 ![](img/invertedImage.jpg)
 <p>devide the picture </p>
