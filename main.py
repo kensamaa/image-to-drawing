@@ -1,14 +1,11 @@
 import matplotlib
 import numpy as np
 import cv2
-def dodge(front,back):
-    result=front*250/(250-back) 
-    result[result>250]=250 
-    result[back==250]=250 
-    return result.astype('uint8')
+
     
-img = cv2.imread("2.png")
+img = cv2.imread("3.jpg")
 height, width = img.shape[0:2]
+
 #                cv2.getRotationMatrix2D(center, angle, scale)
 rotationMatrix = cv2.getRotationMatrix2D((width/2, height/2), 90, .5)
 
@@ -23,7 +20,17 @@ blur=cv2.blur(inverted_img,(5,5))
 
 img_blend= cv2.divide(gray, 255-blur, scale=256)
 f=cv2.cvtColor(img_blend, cv2.COLOR_GRAY2BGR)
-cv2.imshow('Cropped Image', f)
+logo= cv2.divide(gray, 155-blur, scale=256)
+cv2.imshow('logo Image', logo)
+cv2.imshow('gray Image', gray)
+cv2.imshow('inverted Image', inverted_img)
+cv2.imshow('drawing Image', f)
+
+cv2.imwrite('./img/logoImage.jpg', logo) 
+cv2.imwrite('./img/grayImage.jpg', gray) 
+cv2.imwrite('./img/invertedImage.jpg', inverted_img) 
+cv2.imwrite('./img/drawingImage.jpg', f) 
+
 cv2.waitKey(0)
 '''cv2.imshow('Original Image', img) 
 cv2.waitKey(0)'''
